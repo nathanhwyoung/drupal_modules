@@ -1,0 +1,54 @@
+<?php
+
+  function user_greetings_menu() {
+    $items = array();
+    $items['hello_greeting'] = array(
+      'title' => "Hello Greeting",
+      'page callback' => 'hello',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+    $items['admin_goodbye_greeting'] = array(
+      'title' => "Admin Goodbye Greeting",
+      'page callback' => 'admin_goodbye',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+    $items['reg_goodbye_greeting'] = array(
+      'title' => "Goodbye Greeting",
+      'page callback' => 'goodbye',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+    return $items;
+  }
+
+  function hello() {
+    global $user;
+    if (in_array('administrator', $user->roles)) {
+      return '<h1>Welcome to the Admin view!</h1>';
+    }
+      return '<h1>Nice to see you!</h1>';
+  }
+
+  function admin_goodbye() {
+
+      return '<h1>Cya!!!! nerd</h1>';
+  }
+
+  function goodbye() {
+
+      return '<h1>Smell you later!</h1>';
+  }
+
+  function user_greetings_user_login() {
+      $_GET['destination'] = 'hello_greeting';
+  }
+
+  function user_greetings_user_logout() {
+    global $user;
+    if (in_array('administrator', $user->roles)) {
+      $_GET['destination'] = 'admin_goodbye_greeting';
+    } else
+      $_GET['destination'] = 'reg_goodbye_greeting';
+  }

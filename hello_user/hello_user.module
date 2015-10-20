@@ -1,0 +1,20 @@
+<?php
+
+  function hello_user_menu() {
+    $items = array();
+    $items['success'] = array(
+      'title' => "success!",
+      'page callback' => 'is_success',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+    return $items;
+  }
+
+function is_success() {
+  return '<p>Success! You are now the logged in!</p>';
+}
+
+function hello_user_user_insert() {
+  $_GET['destination'] = 'success';
+}

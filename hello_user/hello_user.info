@@ -1,0 +1,5 @@
+name = hello_user
+description = pretty much anything
+package = Examples
+core = 7.x
+files[] = hello_user.module

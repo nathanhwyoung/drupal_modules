@@ -1,0 +1,5 @@
+name = Comment_Buddy
+description = Sends messages to user on comment.
+package = Examples
+core = 7.x
+files[] = comment_buddy.module

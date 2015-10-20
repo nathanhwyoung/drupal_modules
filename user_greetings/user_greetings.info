@@ -1,0 +1,5 @@
+name = User Greeting
+description = Display user-specific greetings.
+package = Examples
+core = 7.x
+files[] = user_greetings.module
