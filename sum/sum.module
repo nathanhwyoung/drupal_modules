@@ -1,0 +1,53 @@
+<?php
+
+function sum_menu() {
+  $items = array();
+  $items['sum'] = array(
+          'title' => 'Calculate Sum',
+          'type' => MENU_NORMAL_ITEM,
+          'access callback' => TRUE,
+          'page callback' => 'drupal_get_form',
+          'page arguments' => array('sum_form'),
+      );
+    $items['success'] = array(
+      'title' => 'Success',
+      'type' => MENU_CALLBACK,
+      'access callback' => TRUE,
+      'page callback' =>'sum_success',
+    );
+  return $items;
+}
+
+function sum_form() {
+  $form = array();
+  $form['left_number'] = array(
+          '#title' => 'Left Number',
+          '#type' => 'textfield',
+          '#description' => t('Please enter your starting number.'),
+      );
+
+  $form['right_number'] = array(
+          '#title' => 'Right Number',
+          '#type' => 'textfield',
+          '#description' => t('Please enter a number to add to the starting number.'),
+      );
+
+  $form['submit'] = array(
+          '#type' => 'submit',
+          '#value' => 'Calculate Sum',
+  );
+  return $form;
+}
+
+function sum_form_submit ($form, &$form_state) {
+    $first_number = $form_state['values']['left_number'];
+    $second_number = $form_state['values']['right_number'];
+    $sum = $first_number + $second_number;
+    $_SESSION ['sum_ouput'] = $sum;
+    $form_state['redirect'] = 'success';
+}
+
+function sum_success() {
+  $answer = $_SESSION['sum_ouput'];
+  return "You calculated a sum! The answer is $answer!";
+}
