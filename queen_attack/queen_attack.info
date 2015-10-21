@@ -1,0 +1,5 @@
+name = Queen Attack
+description = Displays whether or not Queen can attack
+package = Epicodus Examples
+core = 7.x
+files[] = queen_attack.module

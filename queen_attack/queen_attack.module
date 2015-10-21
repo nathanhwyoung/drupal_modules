@@ -1,0 +1,79 @@
+<?php
+
+  function queen_attack_menu() {
+    $items = array();
+    $items['queen_attack'] = array(
+      'title' => 'Queen Attack',
+      'type' => MENU_NORMAL_ITEM,
+      'access callback' => TRUE,
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('queen_attack_form'),
+    );
+
+    $items['queen_attack_results_page'] = array(
+      'title' => 'results',
+      'page callback' => 'queen_attack_results',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+    return $items;
+  }
+
+  function queen_attack_form() {
+    $form['queen_x'] = array(
+      '#title' => 'Queen X',
+      '#type' => 'textfield',
+      '#description' => t('Please enter the queen\'s X position'),
+    );
+
+    $form['queen_y'] = array(
+      '#title' => 'Queen Y',
+      '#type' => 'textfield',
+      '#description' => t('Please enter the queen\'s Y position'),
+    );
+
+    $form['opponent_x'] = array(
+      '#title' => 'Opponent X',
+      '#type' => 'textfield',
+      '#description' => t('Please enter the opponent\'s X position'),
+    );
+
+    $form['opponent_y'] = array(
+      '#title' => 'Opponent Y',
+      '#type' => 'textfield',
+      '#description' => t('Please enter the opponent\'s Y position'),
+    );
+
+    $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => 'Go',
+    );
+    return $form;
+  }
+
+  function queen_attack_form_submit($form, &$form_state) {
+    $queenX = $form_state['values']['queen_x'];
+    $queenY = $form_state['values']['queen_y'];
+    $opponentX = $form_state['values']['opponent_x'];
+    $opponentY = $form_state['values']['opponent_y'];
+
+    if ((($queenX > 8) || ($queenX < 1)) ||
+       (($queenY > 8) || ($queenY < 1)) ||
+       (($opponentX > 8) || ($opponentX < 1)) ||
+       (($opponentY > 8) || ($opponentY < 1))) {
+         $_SESSION['result'] = "Error. One of your coordinates is off zee board.";
+       } elseif ((abs($queenX - $opponentX)) == (abs($queenY - $opponentY)) ||
+                ($queenX == $opponentX) ||
+                ($queenY == $opponentY))
+        {
+         $_SESSION['result'] = "Yes! Queen can attackz!";
+       } else {
+        $_SESSION['result'] = "Nope. Queen cannot attackz.";
+      }
+      $form_state['redirect'] = 'queen_attack_results_page';
+  }
+
+  function queen_attack_results() {
+    $output = '<h1>' . $_SESSION['result'] . '</h1>';
+    return $output;
+  }
