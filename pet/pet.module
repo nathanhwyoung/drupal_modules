@@ -1,0 +1,30 @@
+<?php
+
+function pet_menu() {
+    $items = array();
+    $items['pet'] = array(
+        'title' => 'pet',
+        'page callback' => 'pet',
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    return $items;
+}
+
+function pet() {
+    return "
+        <h1>Bugsy the cat</h1>
+        <img src='http://i.dailymail.co.uk/i/pix/2012/02/08/article-0-11A363B0000005DC-165_634x444.jpg'>
+        <h3>Bugsy factz</h3>
+        <ul>
+            <li>not fluffy</li>
+            <li>not like pets</li>
+            <li>rust</li>
+            <li>is an artist</li>
+            <li>swns.com</li>
+            <li>likes classical music, but nothing after 1910</li>
+            <li>threw a tomato at stravinsky</li>
+        </ul>
+        <p>Read about Bugsy's harrowing tale <a href='http://www.dailymail.co.uk/news/article-2098367/Missing-tortoise-discovered-stuck-fence-alive--months-disappeared.html'>here</a></p>
+    ";
+}

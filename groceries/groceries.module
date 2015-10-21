@@ -1,0 +1,53 @@
+<?php
+
+function groceries_menu() {
+    $items = array();
+    $items['groceries'] = array(
+        'title' => "Cam's Cart",
+        'page callback' => 'groceries_display',
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    return $items;
+}
+
+function groceries_display() {
+    $food_to_buy['pants'] = array(
+        'name' => 'pants',
+        'price' => 21.99,
+        'quantity' => 1,
+    );
+    $food_to_buy['i needs eggs'] = array(
+        'name' => 'i needs eggs',
+        'price' => 4,
+        'quantity' => 4,
+    );
+    $food_to_buy['want fritos'] = array(
+        'name' => 'want fritos',
+        'price' => 3.72,
+        'quantity' => 7.5,
+    );
+    $food_to_buy['bugsy wants treats'] = array(
+        'name' => 'bugsy wants treats',
+        'price' => 11.99,
+        'quantity' => 700,
+    );
+
+    $output = "";
+    $totalprice = 0;
+
+    foreach($food_to_buy as $item) {
+        $name = $item['name'];
+        $price = $item['price'];
+        $quantity = $item['quantity'];
+        $totalitem = $price * $quantity;
+        $totalprice += $totalitem;
+        $output .= '<h1>' . $name . '</h1>' .
+            '<li>' . $name . ' costs $' . $price . ' and you want ' . $quantity . ' of em.' .
+            '<li>' . 'that\'ll cost you $' . $totalitem . ' kid.' . '</li>';
+    }
+
+    $output .= '<h3>' . 'you owe this fine establishment $$$' . $totalprice . '$$$ big ones' . '</h3>';
+
+    return $output;
+}

@@ -1,0 +1,45 @@
+<?php
+
+function cards_menu() {
+    $items = array();
+    $items['ashlin'] = array(
+        'title' => 'hey ashlin',
+        'page callback' => 'ashlin',
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    $items['trent'] = array(
+        'title' => "hey trent",
+        'page callback'=> 'trent',
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    $items['phil'] = array(
+        'title' => "hey phil",
+        'page callback'=> 'phil',
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    return $items;
+}
+
+function ashlin() {
+    $path = drupal_get_path('module', 'cards') . '/img/ashlin.jpg';
+    return '<img src="' . $path . '" alt="a photo of ashlin">
+            <h1>hey ashlin!</h1>
+            <p>dis ya friend camronie, hope ya doin well</p>';
+}
+
+function trent() {
+    $path = drupal_get_path('module', 'cards') . '/img/trent.jpg';
+    return '<img src="' . $path . '" alt="a photo of trent" height=500px>
+            <h1>hey trent!</h1>
+            <p>oh, you guys don\'t know trent??! he\'s tight.</p>';
+}
+
+function phil() {
+    $path = drupal_get_path('module', 'cards') . '/img/phil.jpg';
+    return '<img src="' . $path . '" alt="a photo of phil" width=400px>
+            <h1>oh, hello phillip.</h1>
+            <p>what are you doing here?</p>';
+}

@@ -1,0 +1,5 @@
+name = Groceries
+description = Cam's shopping cart
+package = Epicodus Examples
+core = 7.x
+files[] = groceries.module

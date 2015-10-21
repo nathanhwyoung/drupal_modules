@@ -1,0 +1,5 @@
+name = Cards
+description = Cam's sham card cart
+package = Epicodus Examples
+core = 7.x
+files[] = cards.module

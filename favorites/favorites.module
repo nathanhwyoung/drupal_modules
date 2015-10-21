@@ -1,0 +1,51 @@
+<?php
+
+function favorites_menu(){
+    $items = array();
+    $items['favorite_movies'] = array(
+        'title' => "the favorite movies!",
+        'page callback' => 'movies',
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    $items['favorite_books'] = array(
+        'title' => "teh favorite booksz!",
+        'page callback' => 'books',
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    $items['favorite_songs'] = array(
+        'title' => "the favorites songs(with youtunes links)!",
+        'page callback' => 'songs',
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    return $items;
+}
+
+function movies() {
+    return '<h1>Here are the movbies that I love dearly:</h1>
+    <ul>
+        <li>Sleeping in Seattle</li>
+        <li>The Blade Runners</li>
+        <li>the Astronaut one</li>
+    </ul>';
+}
+
+function books() {
+    return '<h1>Here are the books that I love have read. THey influenced my mind.:</h1>
+    <ul>
+        <li>Where the red fern  goes</li>
+        <li>Extremely hot and invarably close</li>
+        <li>the one about poems</li>
+    </ul>';
+}
+
+function songs() {
+    return '<h1>a List of songs that habe made my heart feel good:</h1>
+    <ul>
+        <li><a href="https://youtu.be/CM7lEVKGUI0">Software - Digital Dance</a></li>
+        <li><a href="https://youtu.be/lRl9Av95Uck">Sade, she rules.</a></li>
+        <li><a href="https://youtu.be/JkK8g6FMEXE">the  astronaut one</a></li>
+    </ul>';
+}

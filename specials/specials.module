@@ -1,0 +1,21 @@
+<?php
+function specials_menu() {
+    $items = array();
+    $items['specials'] = array(
+        'title' => "Cameron's Daily Speshals",
+        'page callback' => 'specials_display',
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+        );
+    return $items;
+}
+
+function specials_display() {
+    return '
+    <ul>
+        <li>Chai Latte</li>
+        <li>Chocolate baccon coockies</li>
+        <li>saltid carramell appel crossant</li>
+    </ul>
+    ';
+}
