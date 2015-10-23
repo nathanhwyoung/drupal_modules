@@ -1,0 +1,61 @@
+<?php
+
+function rock_paper_scissors_menu() {
+    $items = array();
+    $items['rock_paper_scissors'] = array(
+        'title' => 'Rock Paper Scissors',
+        'type' => MENU_NORMAL_ITEM,
+        'access callback' => TRUE,
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('rock_paper_scissors_form'),
+    );
+    $items['results'] = array(
+        'title' => 'Results',
+        'type' => MENU_CALLBACK,
+        'access callback' => TRUE,
+        'page callback' => 'rock_paper_scissors_results',
+    );
+    return $items;
+}
+
+function rock_paper_scissors_form() {
+    $form['user_input'] = array(
+        '#title' => 'User Input',
+        '#type' => 'textfield',
+        '#description' => t('Please enter either Rock, Paper or Scissors.'),
+        '#element_validate' => array('element_validate_input'),
+        '#required' = TRUE,
+    );
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Play!',
+    );
+    return $form;
+}
+
+function element_validate_input ($element) {
+    if (($element != "rock") || ($element != "Rock") || ($element != "R") || ($element != "r")) ||
+       (($element != "paper" || $element != "Paper") || ($element != "P") || ($element != "p")) ||
+       (($element != "scissors" || $element != "Scissors") || ($element != "S") || ($element != "s")) {
+           form_error($element, t('Invalid input. Please try again.'));
+       }
+}
+
+function rock_paper_scissors_form_submit($form, &$form_state) {
+    $user_input = $form_state['values']['user_input'];
+    // $computer_integer = rand(0, 2);
+    // if ($computer_integer = 0) {
+    //     $computer_input = "Rock";
+    // } elseif ($computer_integer = 1) {
+    //     $computer_input = "Paper";
+    // } elseif ($computer_integer = 2) {
+    //     $computer_input = "Scissors";
+    // }
+    $_SESSION['output'] = $user_input;
+    $form_state['redirect'] = 'results';
+}
+
+function rock_paper_scissors_results() {
+    $output = $_SESSION['output'];
+    return "Here is the output: $output";
+}
