@@ -1,0 +1,19 @@
+<?php
+
+function simple_contact_form_alter(&$form, &$form_state, $form_id){
+  if($form_id == 'contact_site_form'){
+    // hides checkbox
+    $form['copy']['#access'] = 0;
+    // sets default value of checkbox to ON
+    $form['copy']['#default_value'] = 1;
+    //hides subject textfield
+    $form['subject']['#access'] = 0;
+    //sets default value of subject to FEEDBACH
+    $form['subject']['#default_value'] = "FEEDBACH";
+    // print '<pre>';
+    // print_r($form);
+    // print '</pre>';
+  }
+  // if($form_id == 'node_type_form'){
+  //   $form_id[]
+}

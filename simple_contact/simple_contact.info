@@ -1,0 +1,5 @@
+name = Simple Contact
+description = Change default contact form
+package = Custom Modules
+core = 7.x
+files[] = follow.module
