@@ -1,0 +1,38 @@
+<?php
+
+    function simple_content_form_alter(&$form, &$form_state, $form_id) {
+
+    // print $form_id;
+
+        if($form_id == 'news_node_form' || $form_id == 'press_node_form' ||
+        $form_id == 'recipes_for_disasters_node_form' || $form_id ==
+        'shortcuts_and_shady_deals_node_form') {
+
+        // print '<pre>';
+        // print_r($form);
+        // print '</pre>';
+
+        $form['additional_settings']['#access'] = 0;
+        $form['comment_settings']['#access'] = 0;
+        //
+        //
+        // $form[CAT_PICTURE] = Array
+        //     (
+        //         [#type] => file
+        //         [#title] => Cat Picture
+        //         [#collapsible] => 1
+        //         [#collapsed] => 1
+        //         [#group] => additional_settings
+        //         [#attributes] => Array
+        //         [#image_button] => 1
+        //
+        //         [#weight] => 20
+        //         [#access] => 1
+        //
+        //
+        //     )
+        //
+        // }
+
+
+    }

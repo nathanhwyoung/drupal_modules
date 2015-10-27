@@ -1,0 +1,5 @@
+name = Follow Alter
+description = Adds links to the follow module
+package = Follow Alter
+core = 7.x
+files[] = follow_alter.module

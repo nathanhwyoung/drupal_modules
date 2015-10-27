@@ -1,0 +1,24 @@
+<?php
+
+// function follow_alter_follow_networks_alter(&$networks, $uid = 0){
+//   // Add a network.
+//   $networks[$uid]['imdb'] = array(
+//     'title' => t('IMDB'),
+//     'domain' => 'imdb.com',
+//   );
+//
+//   $networks[$uid]['drupal'] = array(
+//     'title' => t('Drupal.org'),
+//     'domain' => 'drupal.org',
+//   );
+//
+//   drupal_add_css(drupal_get_path('module', 'follow_alter') . '/css/follow_alter.css', array('group' => CSS_DEFAULT, 'every_page' => TRUE));
+
+// }
+
+function follow_alter_follow_networks_alter(&$networks, $uid = 0){
+    $networks[$uid]['github'] = array(
+        'title' => t('Visit my Github'),
+        'domain' => 'github.com',
+    );
+}

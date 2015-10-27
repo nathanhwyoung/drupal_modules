@@ -1,0 +1,5 @@
+name = Simple Content
+description = Change default content form
+package = Custom Modules
+core = 7.x
+files[] = simple_content.module
